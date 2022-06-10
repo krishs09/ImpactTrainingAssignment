@@ -21,13 +21,15 @@ public class ComplaintServiceImpl implements IComplaintService{
 	@Override
 	public Complaints getComplaintsByComplaintID(long id) throws IOException {
 		
-		Complaints comList = ComplaintDAO.getAllComplaints()
+		Complaints comp = ComplaintDAO.getAllComplaints()
 				.stream()
 				.filter(c->c.getComplaintId() == id)
 				.reduce((u, v) -> { throw new IllegalStateException("More than one ID found");})
 				.get();
 		
-		return comList;
+		System.out.println(comp);
+		
+		return comp;
 	}
 
 	@Override
